@@ -1,4 +1,6 @@
 \documentclass{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[croatian]{babel}
 
 	\usetheme{Boadilla}
 	\usecolortheme{crane}
@@ -27,3 +29,4 @@
 	\end{frame}
 
 \end{document}
+ 
