@@ -1,0 +1,29 @@
+\documentclass{beamer}
+
+	\usetheme{Boadilla}
+	\usecolortheme{crane}
+	\usepackage{helvet}
+
+	\title[TikZ paket]{Izrada grafike koristeći TikZ paket}
+	\subtitle{Računalne vještine}
+	\author{V. Salamon, K.Pavlović, D.Silić}
+	\Institute{Riteh}
+	\date
+
+\begin{document}
+
+	\begin{frame}
+	\titlepage
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Sazetak}
+	\tableofcontents
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Naslov slajda}
+	Hello
+	\end{frame}
+
+\end{document}
