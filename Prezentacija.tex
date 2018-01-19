@@ -2,6 +2,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[croatian]{babel}
 \usepackage{helvet}
+\usepackage{graphicx}
 
 	\usetheme{Boadilla}
 	\usecolortheme{crane}
@@ -98,6 +99,129 @@
   			\item Metapost je program koji je vrlo moćna alternativa TikZ-u. Prije je bio zaseban program što je prouzročilo mnogo problema, no sada je ugrađen unutar LaTeX-a.
   			\item Xfig program je važna alternativa TikZ-u za korisnike koji ne žele "programirati" svoju grafiku kao što je to potrebno uz TikZ i ostale navedene pakete. Postoji program koji pretvara xfig grafiku u TikZ.
   			\end{itemize}
+  		\end{itemize}	
+	\end{frame}	
+
+	\begin{frame}
+	\frametitle{Dijagrami toka u Tikz-u}
+		\begin{itemize}
+		\item Jedna od mnogih stvari za koje možemo upotrebljavati Tikz okruženje u latex uređivaču je svakako i izrada dijagrama toka.
+		\item Dijagrame toka korištenjem  Tikz-a izrađujemo pomoću raznih elemenata predefiniranih unutar samoga okruženja te njegovih raznih biblioteka.
+  		\end{itemize}	
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Dijagrami toka u Tikz-u}
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=12 cm,height=7cm]{Slike/kod.png}
+				\caption{Kod dijagrama toka}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Dijagrami toka u Tikz-u}
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=9 cm,height=7cm]{Slike/izgled.png}
+				\caption{Izgled dijagrama toka}
+			\end{center}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Preambula Tikz dokumenta}
+		\begin{itemize}
+		\item Na početku izrade dijagrama u preambuli dokumenta potrebno je deklarirati kako se radi o paketu naredbi Tikz pomoću \usepackage{tikz} naredbe
+		\item \usetikzlibrary{shapes, arrows, positioning}
+		\item Neke od najčešće korištenih biblioteka su:
+			\begin{enumerate}
+				\item arrows – koristi se za crtanje različitih vrsta strelica
+				\item backgrounds – koristi se za definiranje različitih pozadina slika
+				\item chains – služi za lakše poravnavanje grafičkih elemenata u dokumentu
+				\item shapes – Jedna od najbitnijih biblioteka Tikz-a koja služi za definiranje različitih geometrijskih elemenata kao i raznih drugih oblika 
+			\end{enumerate}
+		\item Biblioteke koje smo koristili pri izradi dijagrama toka u primjeru su:
+			\begin{enumerate}
+				\item shapes – upravo zbog mogućnosti crtanja različitih geometrijskih oblika koji su nam biti pogodni u izradi dijagrama.
+				\item arrows – kako bismo mogli povezati nacrtane objekte
+				\item positioning – kako bismo mogli slagati elemente u određene odnose jedan naprema drugom 
+			\end{enumerate}
+  		\end{itemize}	
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Preambula Tikz dokumenta}
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=12 cm,height=0.4cm]{Slike/tikzstyle.png}
+			\end{center}
+		\end{figure}
+		\begin{itemize}
+		\item Pomoću ove naredbe predefiniramo procesoru kako će izgledati pojedini objekt kojega ćemo kasnije moći jednostavno pozvati pomoću dodjeljene oznake
+		\item Opcije koje smo u konkretnom primjeru koristili:
+			\begin{enumerate}
+				\item diamond – označava kako se radi o obliku romba odnosno dijamanta
+				\item text width=1.6cm – označava kako će širina teksta biti 1.6 cm
+				\item align=center – tekst unutar objekta će biti centralno poravnat
+				\item fill=violet!10 – označava kako će objekt biti ispunjen ljubičastom bojom kojoj će intenzitet biti 10% 
+				\item draw=blue!75 – obrubljuje objekt sa crtom plave boje intenziteta 75%
+				\item minimum size=2.5cm – označava kako minimalna veličina tog elementa mora biti 2.5cm
+				\item semithick – označava debljinu crte obruba elementa
+			\end{enumerate}
+  		\end{itemize}	
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Definicija okruženja}
+		\begin{itemize}
+		\item Nakon što smo definirali objekte koje ćemo koristiti potrebno je definirati okruženje u kojem ćemo raditi.
+		\item Dekaraciju okruženja vršimo naredbom 
+		\item Glavna naredba koju ćemo koristiti, a koja će nam poslužiti upravo zbog svoje svestranosti je \node naredba 
+		\item Druga naredba koju ćemo koristiti je \draw naredba kojom ćemo povezivati napravljene objekte
+  		\end{itemize}	
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{node naredba}
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=12 cm,height=0.4cm]{Slike/node.png}
+			\end{center}
+		\end{figure}
+		\begin{itemize}
+		\item Node se tipično koristi kada se radi o nekom jednostavnom obliku koji u sebi može i ne mora sadržavati neki tekst,a u najjednostavnijem slučaju označava neki tekst koji je postavljen na određenu koordinatu.
+		\item U slučaju iz primjera koristit ćemo node element kako bismo pozvali oblike koje smo prethodno deklarirali
+		\item U prvoj uglatoj zagradi pišemo ime deklariranog elementa kojega želimo pozvati
+		\item Drugu uglatu zagradu koristimo kako bismo definirali odnos između trenutnog i njemu susjednog elementa
+		\item Oblim zagradama definiramo ime objekta
+		\item U uglate zagrade stavljamo tekst koji želimo da se pojavi u objektu
+  		\end{itemize}	
+	\end{frame}
+
+		\begin{frame}
+	\frametitle{draw naredba}
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=12 cm,height=0.4cm]{Slike/draw.png}
+			\end{center}
+		\end{figure}
+		\begin{itemize}
+		\item draw naredbu isto je tako moguće koristiti u mnogim primjenama
+		\item U ovom primjeru koristit ćemo je kako bismo strelicama spojili stvorene objekte
+		\item Uglata zagrada nam pokazuje o kakvoj se strelici radi 
+		\item U oblim zagradama specificiramo koje objekte povezujemo te kako ih povezujemo
+		\item Dodatkom node elementa moguće je dodati tekst u strelicu 
+		\item naredbom controls možemo mijenjati izgled strelice
+  		\end{itemize}	
+	\end{frame}
+
+	\begin{frame}
+	\frametitle{Zatvaranje okruženja}
+		\begin{itemize}
+		\item Kada smo završili sa deklaracijom svih elemenata preostaje nam još samo zatvoriti Tikz okruženje
+		\item Zatvaranje vršimo naredbom end{tikzpicture}
   		\end{itemize}	
 	\end{frame}	
 
