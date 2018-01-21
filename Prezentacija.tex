@@ -4,6 +4,7 @@
 \usepackage{helvet}
 \usepackage{graphicx}
 
+
 	\usetheme{Boadilla}
 	\usecolortheme{crane}
 
@@ -26,6 +27,9 @@
 			\item PGF/TikZ
 			\item TikZ
 			\item Korištenje TIkZ-a
+			\item Dijagrami toka
+			\item Definicija okruženja
+			\item Korištene naredbe
 		\end{itemize}	
 	\end{frame}
 
@@ -130,11 +134,11 @@
 		\end{figure}
 	\end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Preambula Tikz dokumenta}
 		\begin{itemize}
-		\item Na početku izrade dijagrama u preambuli dokumenta potrebno je deklarirati kako se radi o paketu naredbi Tikz pomoću \usepackage{tikz} naredbe
-		\item \usetikzlibrary{shapes, arrows, positioning}
+		\item  Na početku izrade dijagrama u preambuli dokumenta potrebno je deklarirati kako se radi o paketu naredbi Tikz pomoću naredbe\begin{verbatim}\usepackage{tikz}\end{verbatim}
+		\item \begin{verbatim}\usetikzlibrary{shapes, arrows, positioning}\end{verbatim}
 		\item Neke od najčešće korištenih biblioteka su:
 			\begin{enumerate}
 				\item arrows – koristi se za crtanje različitih vrsta strelica
@@ -149,7 +153,7 @@
 				\item positioning – kako bismo mogli slagati elemente u određene odnose jedan naprema drugom 
 			\end{enumerate}
   		\end{itemize}	
-	\end{frame}
+\end{frame}
 
 	\begin{frame}
 	\frametitle{Preambula Tikz dokumenta}
@@ -173,15 +177,15 @@
   		\end{itemize}	
 	\end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Definicija okruženja}
 		\begin{itemize}
 		\item Nakon što smo definirali objekte koje ćemo koristiti potrebno je definirati okruženje u kojem ćemo raditi.
-		\item Dekaraciju okruženja vršimo naredbom 
-		\item Glavna naredba koju ćemo koristiti, a koja će nam poslužiti upravo zbog svoje svestranosti je \node naredba 
-		\item Druga naredba koju ćemo koristiti je \draw naredba kojom ćemo povezivati napravljene objekte
+		\item Dekaraciju okruženja vršimo naredbom \begin{verbatim}\begin{tikzpicture}\end{verbatim}
+		\item Glavna naredba koju ćemo koristiti, a koja će nam poslužiti upravo zbog svoje svestranosti je naredba \begin{verbatim}\node\end{verbatim} 
+		\item Druga naredba koju ćemo koristiti kako bismo povezali napravljene objekte je naredba \begin{verbatim}\draw\end{verbatim}
   		\end{itemize}	
-	\end{frame}
+\end{frame}
 
 	\begin{frame}
 	\frametitle{node naredba}
@@ -217,13 +221,13 @@
   		\end{itemize}	
 	\end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Zatvaranje okruženja}
 		\begin{itemize}
 		\item Kada smo završili sa deklaracijom svih elemenata preostaje nam još samo zatvoriti Tikz okruženje
-		\item Zatvaranje vršimo naredbom end{tikzpicture}
+		\item Zatvaranje vršimo naredbom \begin{verbatim}\end{tikzpicture}\end{verbatim}
   		\end{itemize}	
-	\end{frame}	
+\end{frame}	
 
 \end{document}
  
