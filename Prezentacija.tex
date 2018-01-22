@@ -3,8 +3,10 @@
 \usepackage[croatian]{babel}
 \usepackage{helvet}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{listings}
 
-
+	\usetikzlibrary{shapes, arrows, positioning}
 	\usetheme{Boadilla}
 	\usecolortheme{crane}
 
@@ -118,7 +120,7 @@
 	\frametitle{Dijagrami toka u Tikz-u}
 		\begin{figure}
 			\begin{center}
-				\includegraphics[width=12 cm,height=7cm]{Slike/kod.png}
+				\includegraphics[width=12 cm,height=7cm]{kod.png}
 				\caption{Kod dijagrama toka}
 			\end{center}
 		\end{figure}
@@ -126,13 +128,14 @@
 
 	\begin{frame}
 	\frametitle{Dijagrami toka u Tikz-u}
-		\begin{figure}
-			\begin{center}
-				\includegraphics[width=9 cm,height=7cm]{Slike/izgled.png}
-				\caption{Izgled dijagrama toka}
-			\end{center}
-		\end{figure}
+	\begin{figure}
+		\begin{center}
+			\includegraphics[width=12 cm,height=7cm]{izgled.png}
+			\caption{Izgled dijagrama toka}
+		\end{center}
+	\end{figure}
 	\end{frame}
+
 
 \begin{frame}[fragile]
 	\frametitle{Preambula Tikz dokumenta}
@@ -155,14 +158,12 @@
   		\end{itemize}	
 \end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Preambula Tikz dokumenta}
-		\begin{figure}
-			\begin{center}
-				\includegraphics[width=12 cm,height=0.4cm]{Slike/tikzstyle.png}
-			\end{center}
-		\end{figure}
 		\begin{itemize}
+		\item \begin{verbatim}\tikzstyle{romb} = [diamond, text width=1.6cm,
+		align=center,fill=violet!10, draw=blue!75,
+		minimum size= 2.5cm,semithick]\end{verbatim}
 		\item Pomoću ove naredbe predefiniramo procesoru kako će izgledati pojedini objekt kojega ćemo kasnije moći jednostavno pozvati pomoću dodjeljene oznake
 		\item Opcije koje smo u konkretnom primjeru koristili:
 			\begin{enumerate}
@@ -175,7 +176,7 @@
 				\item semithick – označava debljinu crte obruba elementa
 			\end{enumerate}
   		\end{itemize}	
-	\end{frame}
+\end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Definicija okruženja}
@@ -187,14 +188,11 @@
   		\end{itemize}	
 \end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{node naredba}
-		\begin{figure}
-			\begin{center}
-				\includegraphics[width=12 cm,height=0.4cm]{Slike/node.png}
-			\end{center}
-		\end{figure}
 		\begin{itemize}
+		\item \begin{verbatim}\node[pravokutnik2][left=of prihvacanje](odbacivanje){Tim
+		odbacuje ideju};\end{verbatim}
 		\item Node se tipično koristi kada se radi o nekom jednostavnom obliku koji u sebi može i ne mora sadržavati neki tekst,a u najjednostavnijem slučaju označava neki tekst koji je postavljen na određenu koordinatu.
 		\item U slučaju iz primjera koristit ćemo node element kako bismo pozvali oblike koje smo prethodno deklarirali
 		\item U prvoj uglatoj zagradi pišemo ime deklariranog elementa kojega želimo pozvati
@@ -202,16 +200,12 @@
 		\item Oblim zagradama definiramo ime objekta
 		\item U uglate zagrade stavljamo tekst koji želimo da se pojavi u objektu
   		\end{itemize}	
-	\end{frame}
+\end{frame}
 
-		\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{draw naredba}
-		\begin{figure}
-			\begin{center}
-				\includegraphics[width=12 cm,height=0.4cm]{Slike/draw.png}
-			\end{center}
-		\end{figure}
 		\begin{itemize}
+		\item \begin{verbatim}\draw[->] (projekt.south) -- (diskutiranje.north);\end{verbatim}
 		\item draw naredbu isto je tako moguće koristiti u mnogim primjenama
 		\item U ovom primjeru koristit ćemo je kako bismo strelicama spojili stvorene objekte
 		\item Uglata zagrada nam pokazuje o kakvoj se strelici radi 
@@ -219,7 +213,7 @@
 		\item Dodatkom node elementa moguće je dodati tekst u strelicu 
 		\item naredbom controls možemo mijenjati izgled strelice
   		\end{itemize}	
-	\end{frame}
+\end{frame}
 
 \begin{frame}[fragile]
 	\frametitle{Zatvaranje okruženja}
@@ -229,5 +223,48 @@
   		\end{itemize}	
 \end{frame}	
 
+\begin{frame}[fragile]
+	\frametitle{Struktura stabla}
+		\begin{itemize}
+		\item Struktura stabla jedan je od najčešćih načina vizualizacije hijararhijske strukture
+		\item Struktura stabla omogućuje nam postavljanje elemenata u takozvani roditeljski odnos gdje svaki element roditelj(parent) može imati mnogo pod elemenata koji se nazivaju djeca(child)
+  		\end{itemize}	
+\end{frame}	
+
+\begin{frame}[fragile]
+	\centering
+	\frametitle{Jednostavna stabla}
+	\begin{tikzpicture}
+		\node {root}
+			child {node {left}}
+			child {node {right}
+				child {node {child}}
+				child {node {child}}
+		};
+	\end{tikzpicture}
+	\begin{itemize}
+	\item \begin{verbatim}
+		\begin{tikzpicture}
+		\node {root}
+		 child {node {left}}
+		 child {node {right}
+		  child {node {child}}
+		  child {node {child}}
+		};
+	\end{tikzpicture}
+	\end{verbatim}
+	\end{itemize}
+\end{frame}	
+
+\begin{frame}[fragile]
+	\frametitle{Naredbe stabla}
+		\begin{itemize}
+		\item kao i u primjerima od prije osnovna naredba za pokretanje strukture bit će naredba\begin{verbatim}\node {root}\end{verbatim}
+		\item kako bismo kreirali podelemente koristimo naredbu 
+		\begin{verbatim}child {node {left}}\end{verbatim} svaki dodani element moguće je dalje dijeliti na manje dijelove tipkom tab
+		\item I ovdje je moguće unaprijed definirati postavke prikazivanja stabla naredbom
+		\begin{verbatim}\tikzstyle{level 1}=[sibling distance=8mm]\end{verbatim}
+		\end{itemize}	
+\end{frame}	
 \end{document}
  
