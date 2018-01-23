@@ -1,14 +1,13 @@
-﻿\documentclass{beamer}
+\documentclass{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[croatian]{babel}
 \usepackage{helvet}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{listings}
-\usepackage{pgfplots}
+\usepackage{url}
 
 	\usetikzlibrary{shapes, arrows, positioning}
-	\usetikzlibrary{datavisualization}
 	\usetheme{Boadilla}
 	\usecolortheme{crane}
 
@@ -141,135 +140,135 @@
 	\end{frame}
 
 
-	\begin{frame}[fragile]
-		\frametitle{Preambula Tikz dokumenta}
-			\begin{itemize}
-			\item  Na početku izrade dijagrama u preambuli dokumenta potrebno je deklarirati kako se radi o paketu naredbi Tikz pomoću naredbe\begin{verbatim}\usepackage{tikz}\end{verbatim}
-			\item \begin{verbatim}\usetikzlibrary{shapes, arrows, positioning}\end{verbatim}
-			\item Neke od najčešće korištenih biblioteka su:
-				\begin{enumerate}
-					\item arrows – koristi se za crtanje različitih vrsta strelica
-					\item backgrounds – koristi se za definiranje različitih pozadina slika
-					\item chains – služi za lakše poravnavanje grafičkih elemenata u dokumentu
-					\item shapes – Jedna od najbitnijih biblioteka Tikz-a koja služi za definiranje različitih geometrijskih elemenata kao i raznih drugih oblika 
-				\end{enumerate}
-			\item Biblioteke koje smo koristili pri izradi dijagrama toka u primjeru su:
-				\begin{enumerate}
-					\item shapes – upravo zbog mogućnosti crtanja različitih geometrijskih oblika koji su nam biti pogodni u izradi dijagrama.
-					\item arrows – kako bismo mogli povezati nacrtane objekte
-					\item positioning – kako bismo mogli slagati elemente u određene odnose jedan naprema drugom 
-				\end{enumerate}
-	  		\end{itemize}	
-	\end{frame}
-
-	\begin{frame}[fragile]
-		\frametitle{Preambula Tikz dokumenta}
-			\begin{itemize}
-			\item \begin{verbatim}\tikzstyle{romb} = [diamond, text width=1.6cm,
-			align=center,fill=violet!10, draw=blue!75,
-			minimum size= 2.5cm,semithick]\end{verbatim}
-			\item Pomoću ove naredbe predefiniramo procesoru kako će izgledati pojedini objekt kojega ćemo kasnije moći jednostavno pozvati pomoću dodjeljene oznake
-			\item Opcije koje smo u konkretnom primjeru koristili:
-				\begin{enumerate}
-					\item diamond – označava kako se radi o obliku romba odnosno dijamanta
-					\item text width=1.6cm – označava kako će širina teksta biti 1.6 cm
-					\item align=center – tekst unutar objekta će biti centralno poravnat
-					\item fill=violet!10 – označava kako će objekt biti ispunjen ljubičastom bojom kojoj će intenzitet biti 10% 
-					\item draw=blue!75 – obrubljuje objekt sa crtom plave boje intenziteta 75%
-					\item minimum size=2.5cm – označava kako minimalna veličina tog elementa mora biti 2.5cm
-					\item semithick – označava debljinu crte obruba elementa
-				\end{enumerate}
-	  		\end{itemize}	
-	\end{frame}
-
-	\begin{frame}[fragile]
-		\frametitle{Definicija okruženja}
-			\begin{itemize}
-			\item Nakon što smo definirali objekte koje ćemo koristiti potrebno je definirati okruženje u kojem ćemo raditi.
-			\item Dekaraciju okruženja vršimo naredbom \begin{verbatim}\begin{tikzpicture}\end{verbatim}
-			\item Glavna naredba koju ćemo koristiti, a koja će nam poslužiti upravo zbog svoje svestranosti je naredba \begin{verbatim}\node\end{verbatim} 
-			\item Druga naredba koju ćemo koristiti kako bismo povezali napravljene objekte je naredba \begin{verbatim}\draw\end{verbatim}
-	  		\end{itemize}	
-	\end{frame}
-
-	\begin{frame}[fragile]
-		\frametitle{node naredba}
-			\begin{itemize}
-			\item \begin{verbatim}\node[pravokutnik2][left=of prihvacanje](odbacivanje){Tim
-			odbacuje ideju};\end{verbatim}
-			\item Node se tipično koristi kada se radi o nekom jednostavnom obliku koji u sebi može i ne mora sadržavati neki tekst,a u najjednostavnijem slučaju označava neki tekst koji je postavljen na određenu koordinatu.
-			\item U slučaju iz primjera koristit ćemo node element kako bismo pozvali oblike koje smo prethodno deklarirali
-			\item U prvoj uglatoj zagradi pišemo ime deklariranog elementa kojega želimo pozvati
-			\item Drugu uglatu zagradu koristimo kako bismo definirali odnos između trenutnog i njemu susjednog elementa
-			\item Oblim zagradama definiramo ime objekta
-			\item U uglate zagrade stavljamo tekst koji želimo da se pojavi u objektu
-	  		\end{itemize}	
-	\end{frame}
-
-	\begin{frame}[fragile]
-		\frametitle{draw naredba}
-			\begin{itemize}
-			\item \begin{verbatim}\draw[->] (projekt.south) -- (diskutiranje.north);\end{verbatim}
-			\item draw naredbu isto je tako moguće koristiti u mnogim primjenama
-			\item U ovom primjeru koristit ćemo je kako bismo strelicama spojili stvorene objekte
-			\item Uglata zagrada nam pokazuje o kakvoj se strelici radi 
-			\item U oblim zagradama specificiramo koje objekte povezujemo te kako ih povezujemo
-			\item Dodatkom node elementa moguće je dodati tekst u strelicu 
-			\item naredbom controls možemo mijenjati izgled strelice
-	  		\end{itemize}	
-	\end{frame}
-
-	\begin{frame}[fragile]
-		\frametitle{Zatvaranje okruženja}
-			\begin{itemize}
-			\item Kada smo završili sa deklaracijom svih elemenata preostaje nam još samo zatvoriti Tikz okruženje
-			\item Zatvaranje vršimo naredbom \begin{verbatim}\end{tikzpicture}\end{verbatim}
-	  		\end{itemize}	
-	\end{frame}	
-
-	\begin{frame}[fragile]
-		\frametitle{Struktura stabla}
-			\begin{itemize}
-			\item Struktura stabla jedan je od najčešćih načina vizualizacije hijararhijske strukture
-			\item Struktura stabla omogućuje nam postavljanje elemenata u takozvani roditeljski odnos gdje svaki element roditelj(parent) može imati mnogo pod elemenata koji se nazivaju djeca(child)
-	  		\end{itemize}	
-	\end{frame}	
-
-	\begin{frame}[fragile]
-		\centering
-		\frametitle{Jednostavna stabla}
-		\begin{tikzpicture}
-			\node {root}
-				child {node {left}}
-				child {node {right}
-					child {node {child}}
-					child {node {child}}
-			};
-		\end{tikzpicture}
+\begin{frame}[fragile]
+	\frametitle{Preambula Tikz dokumenta}
 		\begin{itemize}
-		\item \begin{verbatim}
-			\begin{tikzpicture}
-			\node {root}
-			 child {node {left}}
-			 child {node {right}
-			  child {node {child}}
-			  child {node {child}}
-			};
-		\end{tikzpicture}
-		\end{verbatim}
-		\end{itemize}
-	\end{frame}	
+		\item  Na početku izrade dijagrama u preambuli dokumenta potrebno je deklarirati kako se radi o paketu naredbi Tikz pomoću naredbe\begin{verbatim}\usepackage{tikz}\end{verbatim}
+		\item \begin{verbatim}\usetikzlibrary{shapes, arrows, positioning}\end{verbatim}
+		\item Neke od najčešće korištenih biblioteka su:
+			\begin{enumerate}
+				\item arrows – koristi se za crtanje različitih vrsta strelica
+				\item backgrounds – koristi se za definiranje različitih pozadina slika
+				\item chains – služi za lakše poravnavanje grafičkih elemenata u dokumentu
+				\item shapes – Jedna od najbitnijih biblioteka Tikz-a koja služi za definiranje različitih geometrijskih elemenata kao i raznih drugih oblika 
+			\end{enumerate}
+		\item Biblioteke koje smo koristili pri izradi dijagrama toka u primjeru su:
+			\begin{enumerate}
+				\item shapes – upravo zbog mogućnosti crtanja različitih geometrijskih oblika koji su nam biti pogodni u izradi dijagrama.
+				\item arrows – kako bismo mogli povezati nacrtane objekte
+				\item positioning – kako bismo mogli slagati elemente u određene odnose jedan naprema drugom 
+			\end{enumerate}
+  		\end{itemize}	
+\end{frame}
 
-	\begin{frame}[fragile]
-		\frametitle{Naredbe stabla}
-			\begin{itemize}
-			\item kao i u primjerima od prije osnovna naredba za pokretanje strukture bit će naredba\begin{verbatim}\node {root}\end{verbatim}
-			\item kako bismo kreirali podelemente koristimo naredbu 
-			\begin{verbatim}child {node {left}}\end{verbatim} svaki dodani element moguće je dalje dijeliti na manje dijelove tipkom tab
-			\item I ovdje je moguće unaprijed definirati postavke prikazivanja stabla naredbom
-			\begin{verbatim}\tikzstyle{level 1}=[sibling distance=8mm]\end{verbatim}
-			\end{itemize}	
-	\end{frame}
+\begin{frame}[fragile]
+	\frametitle{Preambula Tikz dokumenta}
+		\begin{itemize}
+		\item \begin{verbatim}\tikzstyle{romb} = [diamond, text width=1.6cm,
+		align=center,fill=violet!10, draw=blue!75,
+		minimum size= 2.5cm,semithick]\end{verbatim}
+		\item Pomoću ove naredbe predefiniramo procesoru kako će izgledati pojedini objekt kojega ćemo kasnije moći jednostavno pozvati pomoću dodjeljene oznake
+		\item Opcije koje smo u konkretnom primjeru koristili:
+			\begin{enumerate}
+				\item diamond – označava kako se radi o obliku romba odnosno dijamanta
+				\item text width=1.6cm – označava kako će širina teksta biti 1.6 cm
+				\item align=center – tekst unutar objekta će biti centralno poravnat
+				\item fill=violet!10 – označava kako će objekt biti ispunjen ljubičastom bojom kojoj će intenzitet biti 10% 
+				\item draw=blue!75 – obrubljuje objekt sa crtom plave boje intenziteta 75%
+				\item minimum size=2.5cm – označava kako minimalna veličina tog elementa mora biti 2.5cm
+				\item semithick – označava debljinu crte obruba elementa
+			\end{enumerate}
+  		\end{itemize}	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Definicija okruženja}
+		\begin{itemize}
+		\item Nakon što smo definirali objekte koje ćemo koristiti potrebno je definirati okruženje u kojem ćemo raditi.
+		\item Dekaraciju okruženja vršimo naredbom \begin{verbatim}\begin{tikzpicture}\end{verbatim}
+		\item Glavna naredba koju ćemo koristiti, a koja će nam poslužiti upravo zbog svoje svestranosti je naredba \begin{verbatim}\node\end{verbatim} 
+		\item Druga naredba koju ćemo koristiti kako bismo povezali napravljene objekte je naredba \begin{verbatim}\draw\end{verbatim}
+  		\end{itemize}	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{node naredba}
+		\begin{itemize}
+		\item \begin{verbatim}\node[pravokutnik2][left=of prihvacanje](odbacivanje){Tim
+		odbacuje ideju};\end{verbatim}
+		\item Node se tipično koristi kada se radi o nekom jednostavnom obliku koji u sebi može i ne mora sadržavati neki tekst,a u najjednostavnijem slučaju označava neki tekst koji je postavljen na određenu koordinatu.
+		\item U slučaju iz primjera koristit ćemo node element kako bismo pozvali oblike koje smo prethodno deklarirali
+		\item U prvoj uglatoj zagradi pišemo ime deklariranog elementa kojega želimo pozvati
+		\item Drugu uglatu zagradu koristimo kako bismo definirali odnos između trenutnog i njemu susjednog elementa
+		\item Oblim zagradama definiramo ime objekta
+		\item U uglate zagrade stavljamo tekst koji želimo da se pojavi u objektu
+  		\end{itemize}	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{draw naredba}
+		\begin{itemize}
+		\item \begin{verbatim}\draw[->] (projekt.south) -- (diskutiranje.north);\end{verbatim}
+		\item draw naredbu isto je tako moguće koristiti u mnogim primjenama
+		\item U ovom primjeru koristit ćemo je kako bismo strelicama spojili stvorene objekte
+		\item Uglata zagrada nam pokazuje o kakvoj se strelici radi 
+		\item U oblim zagradama specificiramo koje objekte povezujemo te kako ih povezujemo
+		\item Dodatkom node elementa moguće je dodati tekst u strelicu 
+		\item naredbom controls možemo mijenjati izgled strelice
+  		\end{itemize}	
+\end{frame}
+
+\begin{frame}[fragile]
+	\frametitle{Zatvaranje okruženja}
+		\begin{itemize}
+		\item Kada smo završili sa deklaracijom svih elemenata preostaje nam još samo zatvoriti Tikz okruženje
+		\item Zatvaranje vršimo naredbom \begin{verbatim}\end{tikzpicture}\end{verbatim}
+  		\end{itemize}	
+\end{frame}	
+
+\begin{frame}[fragile]
+	\frametitle{Struktura stabla}
+		\begin{itemize}
+		\item Struktura stabla jedan je od najčešćih načina vizualizacije hijararhijske strukture
+		\item Struktura stabla omogućuje nam postavljanje elemenata u takozvani roditeljski odnos gdje svaki element roditelj(parent) može imati mnogo pod elemenata koji se nazivaju djeca(child)
+  		\end{itemize}	
+\end{frame}	
+
+\begin{frame}[fragile]
+	\centering
+	\frametitle{Jednostavna stabla}
+	\begin{tikzpicture}
+		\node {root}
+			child {node {left}}
+			child {node {right}
+				child {node {child}}
+				child {node {child}}
+		};
+	\end{tikzpicture}
+	\begin{itemize}
+	\item \begin{verbatim}
+		\begin{tikzpicture}
+		\node {root}
+		 child {node {left}}
+		 child {node {right}
+		  child {node {child}}
+		  child {node {child}}
+		};
+	\end{tikzpicture}
+	\end{verbatim}
+	\end{itemize}
+\end{frame}	
+
+\begin{frame}[fragile]
+	\frametitle{Naredbe stabla}
+		\begin{itemize}
+		\item kao i u primjerima od prije osnovna naredba za pokretanje strukture bit će naredba\begin{verbatim}\node {root}\end{verbatim}
+		\item kako bismo kreirali podelemente koristimo naredbu 
+		\begin{verbatim}child {node {left}}\end{verbatim} svaki dodani element moguće je dalje dijeliti na manje dijelove tipkom tab
+		\item I ovdje je moguće unaprijed definirati postavke prikazivanja stabla naredbom
+		\begin{verbatim}\tikzstyle{level 1}=[sibling distance=8mm]\end{verbatim}
+		\end{itemize}	
+\end{frame}	
 
 	\begin{frame}
 	\frametitle{Grafovi}
@@ -298,14 +297,14 @@
 		\end{itemize}
 	\end{frame}	
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Stvaranje funkcija}
 		\begin{itemize}
 			\item Kada se stvara funkcija, koordinate te funkcije se automatski generiraju uz pomoć definirane matematičke jedandžbe
 			\item Sintaksa je jednostavna:
 			nakon što upišemo plot naredbu u zagradama definiramo varijablu \begin{verbatim}\x\end{verbatim} te zatim slijedi matematička jednadžba koja sadrži tu varijablu
 		\end{itemize}
-	\end{frame}	
+\end{frame}	
 
 	\begin{frame}
 	\frametitle{Primjer stvaranja grafa uz pomoć plot naredbe}
@@ -317,7 +316,7 @@
 		\end{figure}
 	\end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Primjer stvaranja grafa uz pomoć plot naredbe}
 		\begin{itemize}
 			\item Prije nego što počnemo moramo definirati tikzpicture te domenu
@@ -337,9 +336,9 @@
 		\end{itemize}
 		\begin{verbatim}\draw[very thin,color=gray] (-0.1,-1.1) grid (3.9,3.9);
 		\end{verbatim}		
-	\end{frame}
+\end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Primjer stvaranja grafa uz pomoć plot naredbe}
 		\begin{itemize}
 			\item Zatim stvaramo koordinatne ose
@@ -352,9 +351,9 @@
 		\begin{verbatim}\draw[->] (-0.2,0) -- (4.2,0) node[right] {$x$};
 		\draw[->] (0,-1.2) -- (0,4.2) node[above] {$f(x)$};
 		\end{verbatim}		
-	\end{frame}
+\end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Primjer stvaranja grafa uz pomoć plot naredbe}
 		\begin{itemize}
 			\item I na kraju stvaramo funkcije
@@ -368,7 +367,7 @@
 		\draw[color=blue] plot (\x,{sin(\x r)}) node[right] {$f(x) = \sin x$};
 		\draw[color=orange] plot (\x,{0.05*exp(\x)}) node[right] {$f(x) = \frac{1}{20} \mathrm e^x$};
 		\end{verbatim}	
-	\end{frame}
+\end{frame}
 
 	\begin{frame}
 	\frametitle{Primjer stvaranja grafa uz pomoć plot naredbe}
@@ -380,7 +379,7 @@
 		\end{figure}
 	\end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Data Visualization naredba}
 		\begin{itemize}
 			\item Kako bi mogli stvarati grafove uz pomoć dataisualization naredbe prvo moramo uključiti pripadajuću biblioteku:
@@ -396,11 +395,11 @@
 			\end{itemize}
 			\item Postoje dva načina zapisa koordinatnih točaka:
 			\begin{enumerate}
-			\itemmi mi direktno upisujemo koje su točke i onda on ovisno o tim točkama napravi funkciju
+			\item mi direktno upisujemo koje su točke i onda on ovisno o tim točkama napravi funkciju
 			\item definiramo u kojem intervalu se nalazi te zatim definiramo funkciju
 			\end{enumerate}
 		\end{itemize}		
-	\end{frame}
+\end{frame}
 
 	\begin{frame}
 	\frametitle{Primjer stvaranja grafa uz pomoć datavisualization naredbe}
@@ -412,7 +411,7 @@
 		\end{figure}
 	\end{frame}
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Korištenje datavisualization naredbe - 1. način}
 		\begin{itemize}
 			\item kao i prije prvo definiramo tikzpicture:
@@ -431,7 +430,7 @@
 		\begin{itemize}
 			\item zatim unutar zagrada definiramo koordinate točaka
 		\end{itemize}
-	\end{frame}
+\end{frame}
 
 	\begin{frame}
 	\frametitle{Korištenje datavisualization naredbe - 1. način}
@@ -443,7 +442,7 @@
 		\end{figure}
 	\end{frame}	
 
-	\begin{frame}
+\begin{frame}[fragile]
 	\frametitle{Korištenje datavisualization naredbe - 2. način}
 		\begin{itemize}
 			\item prvo na isti način definiramo tikzpicture i datavisualization
@@ -456,7 +455,7 @@
 		func y = \value x*\value x;
 		};
 		\end{verbatim}
-	\end{frame}
+\end{frame}
 
 	\begin{frame}
 	\frametitle{Korištenje datavisualization naredbe - 2. način}
@@ -466,20 +465,20 @@
 				\caption{Cijeli kod}
 			\end{center}
 		\end{figure}
-	\end{frame}						
-
-	\begin{frame}
-		\frametitle{Literatura}
-			\begin{enumerate}
-			\item ShareLatex tutorial. [Online]. Dostupno na:
-			\url{https://www.sharelatex.com/learn/TikZ_package}
-			\item Latex wiki. [Online]. Dostupno na:
-			\url {https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ}
-			\item Latex tutorial. [Online]. Dostupno na:
-			\url {https://www.latex-tutorial.com/tutorials/tikz/}
-			\item TikZ/PGF manual. [Online]. Dostupno na:
-			\url{http://mirror.utexas.edu/ctan/graphics/pgf/base/doc/pgfmanual.pdf}
-			\end{enumerate}
 	\end{frame}
 
+\begin{frame}
+	\frametitle{Literatura}	
+	\bibliographystyle{IEEEtr}
+	\begin{thebibliography}{9}
+	\beamertemplatetextbibitems
+	\bibitem{lit1} Sharelatex tutorial. [Online]. Dostupno na: \url{https://www.sharelatex.com/learn/TikZ_package}
+	\bibitem{lit2} Latex wiki. [Online]. Dostupno na: \url{https://en.wikibooks.org/wiki/LaTeX/PGF/TikZ}
+	\bibitem{lit3} Latex tutorial. [Online]. Dostupno na: \url{https://www.latex-tutorial.com/tutorials/tikz/}
+	\bibitem{lit4} TikZ/PGF manual. [Online]. Dostupno na: \url{http://mirror.utexas.edu/ctan/graphics/pgf/base/doc/pgfmanual.pdf}	
+	\end{thebibliography}
+
+\end{frame}
+
 \end{document}
+ 
